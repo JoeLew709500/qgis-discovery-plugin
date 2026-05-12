@@ -1,6 +1,6 @@
 import sys
 
-from PyQt5.QtSql import QSqlDatabase, QSqlQuery
+from qgis.PyQt.QtSql import QSqlDatabase, QSqlQuery
 from qgis.core import QgsMessageLog, QgsSettings
 
 from . import dbutils
