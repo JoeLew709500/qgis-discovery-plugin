@@ -15,7 +15,7 @@ import os.path
 import time
 
 import psycopg2
-from qgis.PyQt.QtCore import QCoreApplication, QModelIndex, QSettings, Qt, QTimer, QTranslator, QVariant
+from qgis.PyQt.QtCore import QCoreApplication, QModelIndex, QSettings, Qt, QTimer, QTranslator, QVariant, QDir
 from qgis.PyQt.QtGui import QColor, QIcon
 from qgis.PyQt.QtWidgets import QAction, QApplication, QComboBox, QCompleter, QMessageBox
 from qgis.core import (
@@ -108,6 +108,9 @@ class DiscoveryPlugin:
         self.iface = _iface
         # initialize plugin directory
         self.plugin_dir = os.path.dirname(__file__)
+
+        from qgis.PyQt.QtCore import QResource
+        QResource.registerResource(os.path.join(self.plugin_dir, "resources.qrc"))
 
         # Localize
         locale = QSettings().value("locale/userLocale")[0:2]
