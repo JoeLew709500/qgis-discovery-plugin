@@ -12,10 +12,10 @@
 
 import os
 
-from PyQt5 import uic
-from PyQt5.QtCore import QSettings, Qt, QUrl
-from PyQt5.QtGui import QColor, QDesktopServices
-from PyQt5.QtWidgets import QApplication, QDialog, QDialogButtonBox, QFileDialog, QMessageBox
+from qgis.PyQt import uic
+from qgis.PyQt.QtCore import QSettings, Qt, QUrl
+from qgis.PyQt.QtGui import QColor, QDesktopServices
+from qgis.PyQt.QtWidgets import QApplication, QDialog, QDialogButtonBox, QFileDialog, QMessageBox
 from qgis.core import QgsSettings
 
 from . import dbutils, discoveryplugin, gpkg_utils, mssql_utils, oracle_utils
@@ -180,7 +180,7 @@ class ConfigDialog(qtBaseClass, uiConfigDialog):
         self.enable_fields_for_data_type()
 
         escape_spec_chars = settings.value(key + "escape_spec_chars", False, type=bool)
-        self.cbEscapeSpecChars.setCheckState(Qt.Checked if escape_spec_chars else Qt.Unchecked)
+        self.cbEscapeSpecChars.setCheckState(Qt.CheckState.Checked if escape_spec_chars else Qt.CheckState.Unchecked)
         echo_search_col = settings.value(key + "echo_search_column", True, type=bool)
         self.cbEchoSearchColumn.setCheckState(Qt.Checked if echo_search_col else Qt.Unchecked)
 
