@@ -219,10 +219,10 @@ class DiscoveryPlugin:
 
         # Set up the completer
         self.completer = QCompleter([])  # Initialise with en empty list
-        self.completer.setCaseSensitivity(Qt.CaseInsensitive)
+        self.completer.setCaseSensitivity(Qt.CaseSensitivity.CaseInsensitive)
         self.completer.setMaxVisibleItems(1000)
-        self.completer.setModelSorting(QCompleter.UnsortedModel)  # Sorting done in PostGIS
-        self.completer.setCompletionMode(QCompleter.UnfilteredPopupCompletion)  # Show all fetched possibilities
+        self.completer.setModelSorting(QCompleter.ModelSorting.UnsortedModel)  # Sorting done in PostGIS
+        self.completer.setCompletionMode(QCompleter.CompletionMode.UnfilteredPopupCompletion)  # Show all fetched possibilities
         self.completer.activated[QModelIndex].connect(self.on_result_selected)
         self.completer.highlighted[QModelIndex].connect(self.on_result_highlighted)
         self.search_line_edit.setCompleter(self.completer)
@@ -469,7 +469,7 @@ class DiscoveryPlugin:
 
     def get_db(self):
         # Create a new connection if required
-        QApplication.setOverrideCursor(Qt.WaitCursor)
+        QApplication.setOverrideCursor(Qt.CursorShape.WaitCursor)
         if self.db_conn is None:
             if self.data_type == "postgres":
                 try:

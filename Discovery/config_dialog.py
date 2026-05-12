@@ -35,7 +35,7 @@ class ConfigDialog(qtBaseClass, uiConfigDialog):
         self.key = ""  # currently selected config key
 
         # signals
-        self.buttonBox.button(QDialogButtonBox.Help).clicked.connect(self.show_help)
+        self.buttonBox.button(QDialogButtonBox.StandardButton.Help).clicked.connect(self.show_help)
         self.addButton.clicked.connect(self.add_config)
         self.deleteButton.clicked.connect(self.delete_config)
         self.configOptions.currentIndexChanged.connect(self.config_selection_changed)
@@ -144,7 +144,7 @@ class ConfigDialog(qtBaseClass, uiConfigDialog):
             cbo.setCurrentIndex(0)
 
     def set_form_fields(self, key):
-        QApplication.setOverrideCursor(Qt.WaitCursor)
+        QApplication.setOverrideCursor(Qt.CursorShape.WaitCursor)
         settings = QSettings()
         settings.beginGroup("/Discovery")
 
@@ -182,7 +182,7 @@ class ConfigDialog(qtBaseClass, uiConfigDialog):
         escape_spec_chars = settings.value(key + "escape_spec_chars", False, type=bool)
         self.cbEscapeSpecChars.setCheckState(Qt.CheckState.Checked if escape_spec_chars else Qt.CheckState.Unchecked)
         echo_search_col = settings.value(key + "echo_search_column", True, type=bool)
-        self.cbEchoSearchColumn.setCheckState(Qt.Checked if echo_search_col else Qt.Unchecked)
+        self.cbEchoSearchColumn.setCheckState(Qt.CheckState.Checked if echo_search_col else Qt.CheckState.Unchecked)
 
         columns = settings.value(key + "display_columns", "", type=str)
         if len(columns) != 0:
@@ -515,7 +515,7 @@ class ConfigDialog(qtBaseClass, uiConfigDialog):
         dialog.setWindowTitle("Open GeoPackage database")
         dialog.setNameFilters(["*.gpkg"])
         dialog.setFileMode(QFileDialog.ExistingFile)
-        if dialog.exec_() == QDialog.Accepted:
+        if dialog.exec_() == QDialog.DialogCode.Accepted:
             filename = dialog.selectedFiles()[0]
             if self.cboFile.findText(filename) < 0:
                 self.cboFile.addItem(filename)
