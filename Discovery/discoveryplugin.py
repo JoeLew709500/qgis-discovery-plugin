@@ -36,7 +36,7 @@ from qgis.core import (
 from qgis.gui import QgsFilterLineEdit, QgsRubberBand, QgsVertexMarker
 from qgis.utils import iface
 
-from Discovery import gpkg_utils, mssql_utils, oracle_utils
+from . import gpkg_utils, mssql_utils, oracle_utils
 
 from . import config_dialog, dbutils, locator_filter
 
