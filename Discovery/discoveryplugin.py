@@ -15,9 +15,9 @@ import os.path
 import time
 
 import psycopg2
-from PyQt5.QtCore import QCoreApplication, QModelIndex, QSettings, Qt, QTimer, QTranslator, QVariant
-from PyQt5.QtGui import QColor, QIcon
-from PyQt5.QtWidgets import QAction, QApplication, QComboBox, QCompleter, QMessageBox
+from qgis.PyQt.QtCore import QCoreApplication, QModelIndex, QSettings, Qt, QTimer, QTranslator, QVariant
+from qgis.PyQt.QtGui import QColor, QIcon
+from qgis.PyQt.QtWidgets import QAction, QApplication, QComboBox, QCompleter, QMessageBox
 from qgis.core import (
     Qgis,
     QgsCoordinateReferenceSystem,
@@ -627,7 +627,7 @@ class DiscoveryPlugin:
         if self.config_combo.currentIndex() >= 0:
             dlg.configOptions.setCurrentIndex(self.config_combo.currentIndex())
 
-        if dlg.exec_():
+        if dlg.exec():
             dlg.write_config()
             self.config_combo.clear()
             for key in [dlg.configOptions.itemText(i) for i in range(dlg.configOptions.count())]:
