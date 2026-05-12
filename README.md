@@ -18,3 +18,8 @@ We’d like to thank Tim Martin of Ordnance Survey for his original PostGIS Sear
 
 To learn how to use this plugin, see:
 http://www.lutraconsulting.co.uk/products/discovery/
+
+
+### Updated to QT6 
+
+Want to sync this to the main branch once QGIS 4 is the standard as its not backwards compatible
